@@ -8,7 +8,11 @@ const openai = new OpenAIApi(configuration);
 
 async function runCompletion() {
     const userPrompt = "Can you create a job description for a Software Engineer working at Deloitte Digital with 3 years experience?"
-    console.log('USER PROMPT LENGTH ---> ' + userPrompt.length)
+    // console.log('USER PROMPT LENGTH ---> ' + userPrompt.length)
+    console.log("Prompt sent to ChatGPT: ")
+    console.log(userPrompt)
+    console.log("Waiting for ChatGPT's response...")
+    console.log("_________________________________")
     const completion = await openai.createCompletion({
         model: 'text-davinci-003',
         temperature: 0.5,
@@ -17,8 +21,8 @@ async function runCompletion() {
         presence_penalty: 0,
         prompt: userPrompt,
     });
-    console.log(completion.data.choices[0].text);
-    console.log(completion.data)
+    // console.log(completion.data.choices[0].text);
+    // console.log(completion.data)
     response = completion.data.choices[0].text
     chatGPTResponse(response)
 }
